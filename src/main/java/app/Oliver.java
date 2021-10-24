@@ -47,6 +47,9 @@ public class Oliver implements Publisher {
 
         LibroCopia copia = new LibroCopia(libro, anho, edicion);
         libro.agregarCopia(copia);
+
+        System.out.println("Registrando libro copia " + copia.getAnho());
+
         return copia;
     }
 

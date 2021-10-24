@@ -18,4 +18,8 @@ public class LibroCopia {
     public String getEdicion() {
         return edicion;
     }
+
+    public String getAnho() {
+        return anho;
+    }
 }
