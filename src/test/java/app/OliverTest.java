@@ -31,9 +31,18 @@ public class OliverTest {
         Assert.assertEquals(oliver.buscarLibroPorEdicion(copia.getLibroTitulo(), "10th edition"),
             null);
 
-        Estudiante estudiante = oliver.registrarEstudiante("Luis", "luis@test.com", "123456789");
-        Assert.assertEquals(estudiante.getNombre(), "Luis");
-        Assert.assertEquals(estudiante.getEmail(), "luis@test.com");
-        Assert.assertEquals(estudiante.getCelular(), "123456789");
+        Estudiante luis = oliver.registrarEstudiante("Luis", "luis@test.com", "123456789",
+            "computer science");
+        oliver.registerObserver(luis);
+        Assert.assertEquals(luis.getNombre(), "Luis");
+        Assert.assertEquals(luis.getEmail(), "luis@test.com");
+        Assert.assertEquals(luis.getCelular(), "123456789");
+
+       Estudiante jose = oliver.registrarEstudiante("Jose", "jose@test.com", "123456789",
+            "finance");
+       oliver.registerObserver(jose);
+
+       oliver.agregarOferta("computer science", "primavera");
+       oliver.removeObserver(luis);
     }
 }
