@@ -8,4 +8,8 @@ public class Autor {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 }

@@ -2,13 +2,15 @@ package app;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class Oliver {
     private static Oliver oliver;
     private Map<String, Estudiante> estudiantes;
     private ArrayList<LibroTitulo> libros = new ArrayList<>();
 
-    private Oliver() {}
+    private Oliver() {
+    }
 
     public static Oliver getInstance() {
         if (oliver == null) {
@@ -17,19 +19,47 @@ public class Oliver {
         return oliver;
     }
 
-    public  LibroCopia registrarLibro(String nombre, String anho, Autor autor, String edicion) {
-        LibroTitulo libro = new LibroTitulo(nombre, anho, autor);
-        LibroCopia copia = new LibroCopia(libro, edicion);
+    private LibroTitulo buscarLibro(String nombre, Autor autor) {
+        for (LibroTitulo libro : libros) {
+            if (Objects.equals(libro.getNombre(), nombre) && Objects.equals(
+                libro.getAutor().getNombre(), autor.getNombre())) {
+                return libro;
+            }
+        }
+        return null;
+    }
+
+    public LibroCopia registrarLibro(String nombre, String anho, Autor autor, String edicion) {
+        LibroTitulo libro = this.buscarLibro(nombre, autor);
+        if (libro == null) {
+            libro = new LibroTitulo(nombre, autor);
+            libros.add(libro);
+        }
+
+        LibroCopia copia = new LibroCopia(libro, anho, edicion);
         libro.agregarCopia(copia);
-        libros.add(libro);
         return copia;
     }
 
-    public ArrayList<LibroTitulo> buscarLibrosPorAuthor(Autor autor) {
-        return new ArrayList<>();
+    public ArrayList<LibroCopia> buscarLibrosPorAuthor(Autor autor) {
+        ArrayList<LibroCopia> librosPorAuthor = new ArrayList<>();
+        for (LibroTitulo libro : libros) {
+            if (Objects.equals(libro.getAutor().getNombre(), autor.getNombre())) {
+                for (LibroCopia copia : libro.getCopias()) {
+                    librosPorAuthor.add(copia);
+                }
+            }
+        }
+        return librosPorAuthor;
     }
 
-    public ArrayList<LibroTitulo> getLibros() {
-        return libros;
+    public ArrayList<LibroCopia> getLibros() {
+        ArrayList<LibroCopia> copias = new ArrayList<>();
+        for (LibroTitulo libro : libros) {
+            for (LibroCopia copia : libro.getCopias()) {
+                copias.add(copia);
+            }
+        }
+        return copias;
     }
 }
