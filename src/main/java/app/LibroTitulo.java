@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LibroTitulo {
     private String nombre;
@@ -24,7 +25,7 @@ public class LibroTitulo {
         return autor;
     }
 
-    public ArrayList<LibroCopia> getCopias() {
+    public List<LibroCopia> getCopias() {
         return copias;
     }
 }

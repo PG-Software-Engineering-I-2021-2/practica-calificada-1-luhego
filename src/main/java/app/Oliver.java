@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -41,7 +42,7 @@ public class Oliver {
         return copia;
     }
 
-    public ArrayList<LibroCopia> buscarLibrosPorAuthor(Autor autor) {
+    public List<LibroCopia> buscarLibrosPorAuthor(Autor autor) {
         ArrayList<LibroCopia> librosPorAuthor = new ArrayList<>();
         for (LibroTitulo libro : libros) {
             if (Objects.equals(libro.getAutor().getNombre(), autor.getNombre())) {
@@ -53,8 +54,8 @@ public class Oliver {
         return librosPorAuthor;
     }
 
-    public ArrayList<LibroCopia> getLibros() {
-        ArrayList<LibroCopia> copias = new ArrayList<>();
+    public List<LibroCopia> getLibros() {
+        List<LibroCopia> copias = new ArrayList<>();
         for (LibroTitulo libro : libros) {
             for (LibroCopia copia : libro.getCopias()) {
                 copias.add(copia);

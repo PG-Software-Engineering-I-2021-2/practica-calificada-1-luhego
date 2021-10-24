@@ -1,8 +1,8 @@
 package app;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Oferta {
-    public ArrayList<LibroTitulo> libros;
+    private List<LibroTitulo> libros;
     private String temporada;
 }
