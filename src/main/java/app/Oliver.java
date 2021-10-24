@@ -25,6 +25,8 @@ public class Oliver implements Publisher {
     }
 
     private LibroTitulo buscarLibro(String nombre, Autor autor) {
+        logger.info("Buscar libro por nombre " + nombre + " y author " + autor.getNombre() + " "
+            + autor.getFechaNacimiento());
         for (LibroTitulo libro : libros) {
             if (Objects.equals(libro.getNombre(), nombre) && Objects.equals(
                 libro.getAutor().getNombre(), autor.getNombre())) {
@@ -84,7 +86,8 @@ public class Oliver implements Publisher {
         return copias;
     }
 
-    public Estudiante registrarEstudiante(String nombre, String email, String celular, String area) {
+    public Estudiante registrarEstudiante(String nombre, String email, String celular,
+        String area) {
         return new Estudiante(nombre, email, celular, area);
     }
 
@@ -104,8 +107,8 @@ public class Oliver implements Publisher {
     }
 
     @Override
-    public void notifyObservers(String area ) {
-        for (Observer ob: this.observers) {
+    public void notifyObservers(String area) {
+        for (Observer ob : this.observers) {
             ob.update(ob, area);
         }
     }

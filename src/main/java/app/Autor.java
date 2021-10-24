@@ -12,4 +12,8 @@ public class Autor {
     public String getNombre() {
         return this.nombre;
     }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
 }

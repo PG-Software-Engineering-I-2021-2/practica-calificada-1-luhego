@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Estudiante implements Observer {
@@ -34,7 +35,7 @@ public class Estudiante implements Observer {
 
     @Override
     public void update(Observer observer, String area) {
-        if (this.area == area) {
+        if (Objects.equals(this.area, area)) {
             logger.info("Hay una nueva oferta para el area " + area);
         }
     }
