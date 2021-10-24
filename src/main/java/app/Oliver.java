@@ -2,12 +2,11 @@ package app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Oliver {
     private static Oliver oliver;
-    private Map<String, Estudiante> estudiantes;
+    private ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private ArrayList<LibroTitulo> libros = new ArrayList<>();
 
     private Oliver() {
@@ -54,6 +53,19 @@ public class Oliver {
         return librosPorAuthor;
     }
 
+    public LibroCopia buscarLibroPorEdicion(LibroTitulo libro, String edicion) {
+        for (LibroTitulo l: libros) {
+            if (l == libro) {
+                for (LibroCopia copia: l.getCopias()) {
+                    if (copia.getEdicion() == edicion) {
+                        return copia;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public List<LibroCopia> getLibros() {
         List<LibroCopia> copias = new ArrayList<>();
         for (LibroTitulo libro : libros) {
@@ -62,5 +74,10 @@ public class Oliver {
             }
         }
         return copias;
+    }
+
+    public Estudiante registrarEstudiante(String nombre, String email, String celular) {
+        Estudiante estudiante = new Estudiante(nombre, email, celular);
+        return estudiante;
     }
 }

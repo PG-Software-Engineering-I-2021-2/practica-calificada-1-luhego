@@ -10,4 +10,12 @@ public class LibroCopia {
         this.anho = anho;
         this.edicion = edicion;
     }
+
+    public LibroTitulo getLibroTitulo() {
+        return libroTitulo;
+    }
+
+    public String getEdicion() {
+        return edicion;
+    }
 }

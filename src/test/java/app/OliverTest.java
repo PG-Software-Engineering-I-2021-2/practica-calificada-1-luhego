@@ -9,10 +9,12 @@ public class OliverTest {
         Oliver oliver = Oliver.getInstance();
 
         Autor sommerfield = new Autor("Sommerfield", "18/11/1990");
-        oliver.registrarLibro("Software Engineering", "1980", sommerfield, "6th edition");
+        LibroCopia copia = oliver.registrarLibro("Software Engineering", "1980", sommerfield,
+            "6th edition");
         oliver.registrarLibro("Software Engineering", "1981", sommerfield, "7th edition");
         oliver.registrarLibro("Software Engineering", "1982", sommerfield, "8th edition");
-        oliver.registrarLibro("Software Engineering", "1983", sommerfield, "9th edition");
+        LibroCopia softEngineering9 = oliver.registrarLibro("Software Engineering", "1983",
+            sommerfield, "9th edition");
 
         Autor bob = new Autor("Robert Martin", "18/10/1970");
         oliver.registrarLibro("Clean Code", "1990", bob, "6th edition");
@@ -24,5 +26,14 @@ public class OliverTest {
 
         Assert.assertEquals(oliver.buscarLibrosPorAuthor(sommerfield).size(), 4);
 
+        Assert.assertEquals(oliver.buscarLibroPorEdicion(copia.getLibroTitulo(), "9th edition"),
+            softEngineering9);
+        Assert.assertEquals(oliver.buscarLibroPorEdicion(copia.getLibroTitulo(), "10th edition"),
+            null);
+
+        Estudiante estudiante = oliver.registrarEstudiante("Luis", "luis@test.com", "123456789");
+        Assert.assertEquals(estudiante.getNombre(), "Luis");
+        Assert.assertEquals(estudiante.getEmail(), "luis@test.com");
+        Assert.assertEquals(estudiante.getCelular(), "123456789");
     }
 }
