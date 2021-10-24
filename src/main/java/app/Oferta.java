@@ -8,4 +8,12 @@ public class Oferta {
         this.area = area;
         this.temporada = temporada;
     }
+
+    public String getArea() {
+        return area;
+    }
+
+    public String getTemporada() {
+        return temporada;
+    }
 }

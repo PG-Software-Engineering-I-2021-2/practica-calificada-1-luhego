@@ -93,6 +93,7 @@ public class Oliver implements Publisher {
 
     public void agregarOferta(String area, String temporada) {
         Oferta oferta = new Oferta(area, temporada);
+        logger.info("Agregar nueva oferta" + oferta.getArea() + " " + oferta.getTemporada());
         this.ofertas.add(oferta);
         this.notifyObservers(area);
     }
