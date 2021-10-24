@@ -12,7 +12,6 @@ public class Oliver implements Publisher {
     private List<Estudiante> estudiantes = new ArrayList<>();
     private List<LibroTitulo> libros = new ArrayList<>();
     private List<Oferta> ofertas = new ArrayList<>();
-    private static final Logger logger = Logger.getLogger(Oliver.class.getName());
 
     private Oliver() {
     }
@@ -25,7 +24,7 @@ public class Oliver implements Publisher {
     }
 
     private LibroTitulo buscarLibro(String nombre, Autor autor) {
-        logger.info("Buscar libro por nombre " + nombre + " y author " + autor.getNombre() + " "
+        System.out.println("Buscar libro por nombre " + nombre + " y author " + autor.getNombre() + " "
             + autor.getFechaNacimiento());
         for (LibroTitulo libro : libros) {
             if (Objects.equals(libro.getNombre(), nombre) && Objects.equals(
@@ -37,7 +36,7 @@ public class Oliver implements Publisher {
     }
 
     public LibroCopia registrarLibro(String nombre, String anho, Autor autor, String edicion) {
-        logger.info(
+        System.out.println(
             "Registrando libro: " + nombre + ", anho: " + anho + " autor: " + autor.getNombre()
                 + ", edicion: " + edicion);
         LibroTitulo libro = this.buscarLibro(nombre, autor);
@@ -93,7 +92,7 @@ public class Oliver implements Publisher {
 
     public void agregarOferta(String area, String temporada) {
         Oferta oferta = new Oferta(area, temporada);
-        logger.info("Agregar nueva oferta" + oferta.getArea() + " " + oferta.getTemporada());
+        System.out.println("Agregar nueva oferta" + oferta.getArea() + " " + oferta.getTemporada());
         this.ofertas.add(oferta);
         this.notifyObservers(area);
     }
